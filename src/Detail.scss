@@ -1,0 +1,50 @@
+
+// $ : 변수명
+$메인칼라 : #ff0000;
+
+.red {
+    color: $메인칼라;
+}
+
+// @mixin : 함수(긴코드축약)
+@mixin 함수() {
+    background : #eeeeee;
+    padding : 15px;
+    border-radius : 5px;
+    max-width : 500px;
+    width : 100%;
+    margin : auto;
+}
+
+// @include : 함수 가져다쓸때
+.my-alert {
+    @include 함수()
+}
+
+// @extend : 복붙기능
+.my-alert2 {
+    @extend .my-alert;
+    background: #ffe591;
+}
+
+.my-alert p {
+    margin-bottom : 0;
+}
+
+// div.container h4 {
+//     color: blue;
+// }
+
+// div.container p {
+//     color: green;
+// }
+
+// nesting : 셀렉터 대신 사용
+// div.container {
+//     h4 {
+//         color: blue;
+//     }
+//     p {
+//         color: green;
+//     }
+// }
