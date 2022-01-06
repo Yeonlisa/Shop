@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -13,8 +13,30 @@ const 제목 = styled.h4`
     color: ${ props => props.색상 }
 `;
 
+// Lifecycle Hook(class 컴포넌트)
+/* class Detail2 extends React.Component {
+
+    componentDidMount() {
+        // Detail2 컴포넌트가 Mount(등장) 되었을 때 실행할 코드
+        // Ajax 같은 것도 이런 곳에 자주 사용된다
+    }
+
+    componentWillUnmount() {
+        // Detail2 컴포넌트가 Unmount(해제) 되기 직전에 실행할 코드
+    }
+
+} */
+
 function Detail(props) {
 
+    // useEffect 훅 : 컴포넌트가 mount 되었을 때, 컴포넌트가 update 될 때 특정 코드를 실행할 수 있음
+    useEffect(() => {
+        /* let 타이머 = setTimeout(() => {
+            // alert 창을 안보이게
+        }, 2000) */
+        /* return function 어쩌구(){ 실행할코드 } // Unmount될때 실행됨 */
+    });
+    
     let { id } = useParams();
     let 찾은상품 = props.shoes.find((상품) =>{
         return 상품.id == id
