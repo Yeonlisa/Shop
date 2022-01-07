@@ -4,6 +4,7 @@ import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bo
 import './App.css';
 import Data from './data.js';
 import Detail from './Detail.js';
+import axios from 'axios';
 
 import { Link, Route, Switch } from 'react-router-dom';
 
@@ -53,6 +54,17 @@ function App() {
                 })
               }
             </div>
+            <button className='btn btn-primary' onClick={() => {
+              
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((result) => {
+                console.log(result.data)
+              })
+              .catch(() => {
+                console.log('실패')
+              })
+            
+            }}>더보기</button>
           </div>
         </Route>
 
