@@ -1,5 +1,4 @@
 /*eslint-disable*/
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
