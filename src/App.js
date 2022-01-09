@@ -1,12 +1,15 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
 import Data from './data.js';
 import Detail from './Detail.js';
 import axios from 'axios';
-
 import { Link, Route, Switch } from 'react-router-dom';
+
+export const 재고context = React.createContext();
+
+
 
 function App() {
 
@@ -48,13 +51,17 @@ function App() {
             </p>
           </Jumbotron>
           <div className="container">
-            <div className="row">
-              {
-                shoes.map((a,i) => {
-                  return <Card shoes={shoes[i]} i={i} key={i}/>
-                })
-              }
-            </div>
+
+            <재고context.Provider value={재고}>            
+              <div className="row">
+                {
+                  shoes.map((a,i) => {
+                    return <Card shoes={shoes[i]} i={i} key={i}/>
+                  })
+                }
+              </div>
+            </재고context.Provider>
+
             <button className='btn btn-primary' onClick={() => {
 
               axios.get('https://codingapple1.github.io/shop/data2.json')
@@ -70,8 +77,11 @@ function App() {
           </div>
         </Route>
 
+
         <Route path="/detail/:id">
-          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+          <재고context.Provider value={재고}> 
+            <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+          </재고context.Provider>
         </Route>
       </Switch>
 
@@ -84,13 +94,22 @@ function App() {
 
 
 function Card(props) {
+
+  let 재고 = useContext(재고context);
+
   return (
       <div className="col-md-4">
         <img src={ 'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg' } width="100%"/>
         <h4>{ props.shoes.title }</h4>
         <p>{ props.shoes.content} & { props.shoes.price}</p>
+        <Test />
       </div>
   )
+}
+
+function Test() {
+  let 재고 = useContext(재고context);
+  return <p>{재고[0]}</p>
 }
 
 export default App;
