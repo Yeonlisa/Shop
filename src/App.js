@@ -7,6 +7,8 @@ import Detail from './Detail.js';
 import axios from 'axios';
 import { Link, Route, Switch } from 'react-router-dom';
 
+import Cart from './Cart.js';
+
 export const 재고context = React.createContext();
 
 
@@ -83,6 +85,13 @@ function App() {
             <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
           </재고context.Provider>
         </Route>
+
+        <Route path="/cart">
+            <Cart></Cart>
+        </Route>
+
+
+
       </Switch>
 
       {/* <Route path="/어쩌구" component={Modal}></Route> */}
