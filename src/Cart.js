@@ -1,4 +1,4 @@
-/*eslint-disabled*/
+/*eslint-disable*/
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
