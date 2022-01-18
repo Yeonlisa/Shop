@@ -28,9 +28,9 @@ function Cart(props) {
                                     <td>{ a.name }</td>
                                     <td>{ a.quan }</td>
                                     <td>
-                                        <button onClick={() => { dispatch({ type : '수량증가' }) }}>
+                                        <button onClick={() => { dispatch({ type : '수량증가', 데이터 : a.id }) }}>
                                         +</button>
-                                        <button onClick={() => { dispatch({ type : '수량감소' }) }}>
+                                        <button onClick={() => { dispatch({ type : '수량감소', 데이터 : a.id }) }}>
                                         -</button>
                                     </td>
                                 </tr>
@@ -39,6 +39,8 @@ function Cart(props) {
                     }
                 </tbody>
             </Table>
+
+            
             { props.alert열렸니 === true
                 ? (<div className="my-alert2">
                     <p>지금 구매하시면 신규할인 20%</p>

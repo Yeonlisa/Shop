@@ -39,10 +39,10 @@ function Detail(props) {
     },[]);
     
     let { id } = useParams();
-    let 찾은상품 = props.shoes.find((상품) =>{
-        return 상품.id == id
-    });
     let history = useHistory();
+    let 찾은상품 = props.shoes.find(x => x.id == id);
+    let [탭, 탭변경] = useState(0);
+    let [click, setClick] = useState(false);
 
     return(
         <div className="container">
@@ -61,7 +61,7 @@ function Detail(props) {
                 <div className="col-md-6">
                     <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
                 </div>
-                <div className="col-md-6 mt-4">
+                <div className="col-md-6 mt-2">
                     <h4 className="pt-5">{찾은상품.title}</h4>
                     <p>{찾은상품.content}</p>
                     <p>{찾은상품.price}원</p>
@@ -71,9 +71,10 @@ function Detail(props) {
 
                     <button className="btn btn-danger" onClick={() => {
                         props.재고변경([9,11,12])
-                        props.dispatch({ type: '항목추가', payload : { id : 2, name : '새로운상품', quan : 1 } });
+                        props.dispatch({ type: '항목추가', 데이터 : { id : 찾은상품.id, name : 찾은상품.title, quan : 1 } });
                         history.push('/cart');
-                    }}>주문하기</button>&nbsp;
+                    }}>주문하기</button>
+                    &nbsp;
                     <button className="btn btn-danger" onClick={() => { 
                         history.push('/')
                     }}>뒤로가기</button> 
