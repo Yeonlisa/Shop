@@ -2,6 +2,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
+import './Detail.scss';
 
 function Cart(props) {
 
@@ -43,8 +44,11 @@ function Cart(props) {
             
             { props.alert열렸니 === true
                 ? (<div className="my-alert2">
-                    <p>지금 구매하시면 신규할인 20%</p>
-                    <button onClick={() => { props.dispatch({ type: 'alert닫기' }) }}>닫기</button>
+                    <p>지금 구매하시면 신규할인 20%
+                        <button className="close" onClick={() => { props.dispatch({ type: 'alert닫기' }) }}>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </p>
                 </div>)
                 : null
             }
@@ -52,14 +56,14 @@ function Cart(props) {
     )
 }
 
-// function state를props화(state) {
-//     return {
-//         state : state.reducer,
-//         alert열렸니 : state.reducer2
-//     }
-// }
+function state를props화(state) {
+    return {
+        state : state.reducer,
+        alert열렸니 : state.reducer2
+    }
+}
 
 
-// export default connect(state를props화)(Cart)
+export default connect(state를props화)(Cart)
 
-export default Cart;
+// export default Cart;
