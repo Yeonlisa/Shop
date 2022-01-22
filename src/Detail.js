@@ -18,6 +18,13 @@ const 제목 = styled.h4`
     color: ${ props => props.색상 }
 `;
 
+/* 1. 누가 Detail 페이지 들어가면
+2. localStorage에 있는 항목을 꺼낸다.
+3. null이 나오거나 []가 나오는 두가지 경우가 있을 것이다.
+4. []가 나오면 거기에 URL파라미터의 id부분을 push()한다.(추가)
+5. 중복 처리한다.
+6. 그러면 다시 []를 localStorage에 따옴표 쳐서 저장한다. */
+
 
 function Detail(props) {
     
